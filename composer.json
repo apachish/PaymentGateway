@@ -1,0 +1,32 @@
+{
+  "name": "apachish/payment-driver",
+  "description": "This is a Laravel Package for Payment Gateway Integration",
+  "version":"d",
+  "license": "MIT",
+  "homepage": "https://github.com/apachish/payment-driver",
+
+  "authors": [
+    {
+      "name": "shahriar pahlevansadegh",
+      "email": "support@apachish.ir",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Apachish\\Payment\\Driver": "src/"
+    }
+  },
+  "suggest": {
+    "ext-soap": "Needed to support some drivers that required SOAP"
+  },
+  "require": {
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Apachish\\Media\\MediaServiceProvider"
+      ]
+    }
+  }
+}
