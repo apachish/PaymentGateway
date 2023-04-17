@@ -1,13 +1,13 @@
 <?php
 
-namespace Apachish\Media;
+namespace Apachish\PaymentGateway;
 
 
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 
 
-class MediaServiceProvider extends ServiceProvider
+class PaymentGatewayServiceProvider extends ServiceProvider
 {
     protected $commands = [
     ];
@@ -15,6 +15,7 @@ class MediaServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/config/errors.php','errors');
+        $this->mergeConfigFrom(__DIR__.'/config/gateway_payment.php','gateway_payment');
         $this->commands($this->commands);
     }
 
@@ -28,25 +29,19 @@ class MediaServiceProvider extends ServiceProvider
 
     private function loadDependencies()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
-        $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         return $this;
     }
 
     private function publishDependencies(){
         $this->publishes([
-            __DIR__.'/database/migrations' => database_path('/migrations')
-        ], 'media-apachish-migration');
-
-        $this->publishes([
-            __DIR__ . '/database/Seeds' => database_path('/seeders'),
-        ], 'media-apachish-seeds');
-        $this->publishes([
             __DIR__.'/config/errors.php' => config_path('errors.php'),
-        ],'media-apachish-config-error');
+        ],'apachish-config-error');
 
-
+        $this->publishes([
+            __DIR__.'/config/gateway_payment.php' => config_path('gateway_payment.php'),
+        ],'apachish-config-gateway_payment');
 
     }
 

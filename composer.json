@@ -1,7 +1,7 @@
 {
-  "name": "apachish/payment-driver",
+  "name": "apachish/payment-gateway",
   "description": "This is a Laravel Package for Payment Gateway Integration",
-  "version":"d",
+  "version":"1.0",
   "license": "MIT",
   "homepage": "https://github.com/apachish/payment-driver",
 
@@ -14,7 +14,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Apachish\\Payment\\Driver": "src/"
+      "Apachish\\PaymentGateway\\": "src/"
     }
   },
   "suggest": {
@@ -25,7 +25,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Apachish\\Media\\MediaServiceProvider"
+        "Apachish\\PaymentGateway\\PaymentGatewayServiceProvider"
       ]
     }
   }
