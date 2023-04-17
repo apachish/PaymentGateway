@@ -14,7 +14,7 @@ class PaymentGatewayServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/errors.php','errors');
+        $this->mergeConfigFrom(__DIR__.'/config/errors.php','errors_gateway_payment');
         $this->mergeConfigFrom(__DIR__.'/config/gateway_payment.php','gateway_payment');
         $this->commands($this->commands);
     }
@@ -31,6 +31,7 @@ class PaymentGatewayServiceProvider extends ServiceProvider
     {
 
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/resources/views','gateway_payment');
         return $this;
     }
 
